@@ -11,7 +11,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @Entity(name = "Company")
-@Table(name = "company")
+@Table(name = "companies")
 public class Company {
 
     @Id
@@ -19,13 +19,12 @@ public class Company {
     @Column(name = "id", nullable = false)
     private UUID id;
 
-    @Column(name = "company_name", nullable = false)
-    private String companyName;
+    @Column(name = "name", nullable = false)
+    private String name;
 
-    @Column(name = "employees", nullable = false)
-    @OneToMany(mappedBy = "company")
+    @OneToMany(mappedBy="company")
+    private List<User> ceoList;
+
+    @OneToMany(mappedBy="company")
     private List<User> employees;
-
-
-    // TODO: De gandit cum sa asociem linkul de invitatie pentru user cu rolul deja setat
 }

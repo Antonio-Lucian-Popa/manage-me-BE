@@ -1,15 +1,30 @@
 package com.asusoftware.manageme.company.controller;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.asusoftware.manageme.company.model.CompanyDto;
+import com.asusoftware.manageme.company.model.CreateCompanyDto;
+import com.asusoftware.manageme.company.service.CompanyService;
+import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.UUID;
+
+@AllArgsConstructor
 @RestController
 @RequestMapping(path = "/api/v1/companies")
 public class CompanyController {
 
-    @PostMapping(path = "/createCompany")
-    public void create() {}
+    private final CompanyService companyService;
+
+    @PostMapping(path = "/createCompany/{ceoId}")
+    public void create(@PathVariable(name = "ceoId") UUID ceoId, @RequestBody CreateCompanyDto createCompanyDto) {
+        companyService.create(ceoId, createCompanyDto);
+    }
+
+    @GetMapping(path = "/findAll")
+    public List<CompanyDto> findAll() {
+        return companyService.findAll();
+    }
 }
 
 

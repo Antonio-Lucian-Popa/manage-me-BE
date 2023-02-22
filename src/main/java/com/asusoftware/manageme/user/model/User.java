@@ -13,7 +13,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @Entity(name = "User")
-@Table(name = "user")
+@Table(name = "users")
 public class User {
 
     @Id
@@ -36,6 +36,10 @@ public class User {
 
     @Column(name = "birthday", nullable = true)
     private LocalDate birthday;
+
+    @Column(name = "status", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private EmployeeStatus status;
 
     @Column(name = "user_roles", nullable = false)
     @ElementCollection(targetClass = UserRole.class)
