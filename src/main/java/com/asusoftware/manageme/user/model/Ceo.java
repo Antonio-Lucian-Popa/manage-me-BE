@@ -12,19 +12,19 @@ import java.util.UUID;
 
 @Getter
 @Setter
-@Entity(name = "User")
-@Table(name = "users")
-public class User {
+@Entity(name = "Ceo")
+@Table(name = "ceos")
+public class Ceo {
 
     @Id
     @GeneratedValue
     @Column(name = "id", nullable = false)
     private UUID id;
 
-    @Column(name = "firstName", nullable = false)
+    @Column(name = "first_name", nullable = false)
     private String firstName;
 
-    @Column(name = "lastName", nullable = false)
+    @Column(name = "last_name", nullable = false)
     private String lastName;
 
     @Email
@@ -37,16 +37,14 @@ public class User {
     @Column(name = "birthday", nullable = true)
     private LocalDate birthday;
 
-    @Column(name = "status", nullable = false)
-    @Enumerated(EnumType.STRING)
-    private EmployeeStatus status;
-
     @Column(name = "user_roles", nullable = false)
     @ElementCollection(targetClass = UserRole.class)
     @Enumerated(EnumType.STRING)
     private List<UserRole> userRoles;
 
     @ManyToOne
-    @JoinColumn(name="company_id", nullable=false)
+    @JoinColumn(name="company_id", nullable=true)
     private Company company;
+
+
 }

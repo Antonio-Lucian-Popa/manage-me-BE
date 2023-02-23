@@ -1,6 +1,8 @@
 package com.asusoftware.manageme.company.model;
 
-import com.asusoftware.manageme.user.model.User;
+import com.asusoftware.manageme.invitationLink.model.InvitationLink;
+import com.asusoftware.manageme.user.model.Ceo;
+import com.asusoftware.manageme.user.model.Employee;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,9 +24,12 @@ public class Company {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @OneToMany(mappedBy="company")
-    private List<User> ceoList;
+    @OneToMany(mappedBy="company", cascade = CascadeType.ALL)
+    private List<Ceo> ceoList;
 
-    @OneToMany(mappedBy="company")
-    private List<User> employees;
+    @OneToMany(mappedBy="company", cascade = CascadeType.ALL)
+    private List<Employee> employees;
+
+    @OneToMany(mappedBy="company", cascade = CascadeType.ALL)
+    private List<InvitationLink> invitationLinks;
 }

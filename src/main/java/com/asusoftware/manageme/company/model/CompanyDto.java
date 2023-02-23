@@ -2,7 +2,6 @@ package com.asusoftware.manageme.company.model;
 
 import com.asusoftware.manageme.user.model.CeoDto;
 import com.asusoftware.manageme.user.model.EmployeeDto;
-import com.asusoftware.manageme.user.model.User;
 import lombok.Getter;
 import lombok.Setter;
 
