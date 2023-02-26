@@ -41,7 +41,7 @@ public class Ceo {
     @JoinColumn(name="company_id", nullable=true)
     private Company company;
 
-    @OneToMany(mappedBy="employee", cascade = {CascadeType.PERSIST, CascadeType.DETACH})
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH}, orphanRemoval = true)
     private List<UserRole> userRoles;
 
 }

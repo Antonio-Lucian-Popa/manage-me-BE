@@ -19,12 +19,4 @@ public class UserRole {
 
     @Column(name = "role", nullable = false)
     private String role;
-
-    @ManyToOne
-    @JoinColumn(name="ceo_id", nullable=true)
-    private Ceo ceo;
-
-    @ManyToOne
-    @JoinColumn(name="employee_id", nullable=true)
-    private Employee employee;
 }
