@@ -37,11 +37,6 @@ public class Employee {
     @Column(name = "birthday", nullable = true)
     private LocalDate birthday;
 
-    @Column(name = "user_roles", nullable = false)
-    @ElementCollection(targetClass = UserRole.class)
-    @Enumerated(EnumType.STRING)
-    private List<UserRole> userRoles;
-
     @Column(name = "status", nullable = true)
     @Enumerated(EnumType.STRING)
     private EmployeeStatus status;
@@ -49,4 +44,7 @@ public class Employee {
     @ManyToOne
     @JoinColumn(name="company_id", nullable=true)
     private Company company;
+
+    @OneToMany(mappedBy="employee", cascade = {CascadeType.PERSIST, CascadeType.DETACH})
+    private List<UserRole> userRoles;
 }
